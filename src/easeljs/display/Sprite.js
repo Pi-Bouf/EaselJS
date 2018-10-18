@@ -227,7 +227,7 @@ this.createjs = this.createjs||{};
 		var o = this.spriteSheet.getFrame(this._currentFrame|0);
 		if (!o) { return false; }
 		var upsampling = 1;
-		if (this.spritesheet.halfSize) upsampling = 2;
+		if (this.spriteSheet.halfSize) upsampling = 2;
 		var rect = o.rect;
 		if (rect.width && rect.height) { ctx.drawImage(o.image, rect.x/upsampling, rect.y/upsampling, rect.width/upsampling, rect.height/upsampling, -o.regX, -o.regY, rect.width, rect.height); }
 		return true;
