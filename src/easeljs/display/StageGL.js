@@ -570,7 +570,7 @@ this.createjs = this.createjs||{};
 		var start = (target !== -1 && onlyTarget)?(target):(0);
 		var end = (target !== -1 && onlyTarget)?(target+1):(spritesheet._frames.length);
 		var upsampling = 1;
-		if (this.halfSizeSpriteSheets) upsampling = 2;
+		if (spritesheet.halfSize) upsampling = 2;
 		for (var i=start; i<end; i++) {
 			var f = spritesheet._frames[i];
 			if (f.uvRect || f.image.width <= 0 || f.image.height <= 0) { continue; }
