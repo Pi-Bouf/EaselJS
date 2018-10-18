@@ -569,16 +569,18 @@ this.createjs = this.createjs||{};
 
 		var start = (target !== -1 && onlyTarget)?(target):(0);
 		var end = (target !== -1 && onlyTarget)?(target+1):(spritesheet._frames.length);
+		var upsampling = 1;
+		if (this.halfSizeSpriteSheets) upsampling = 2;
 		for (var i=start; i<end; i++) {
 			var f = spritesheet._frames[i];
 			if (f.uvRect || f.image.width <= 0 || f.image.height <= 0) { continue; }
 
 			var r = f.rect;
 			f.uvRect = {
-				t: 1 - (r.y / f.image.height),
-				l: r.x / f.image.width,
-				b: 1 - ((r.y + r.height) / f.image.height),
-				r: (r.x + r.width) / f.image.width
+				t: 1 - (r.y / (f.image.height * upsampling) ),
+				l: r.x / (f.image.width* upsampling),
+				b: 1 - ((r.y + r.height) / (f.image.height* upsampling)),
+				r: (r.x + r.width) / (f.image.width * upsampling)
 			};
 		}
 

@@ -313,6 +313,11 @@ this.createjs = this.createjs||{};
 		 * @type Number
 		 **/
 		this._margin = 0;
+		
+		/**
+		 * spritesheet texture has been downsampled to half, thus, texture coordinates have to be adjusted on draw operations
+		 **/
+		this.halfSize = false;
 
 		// setup:
 		this._parseData(data);
