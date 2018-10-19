@@ -1,3 +1,28 @@
+Hi! I'm Néstor and this is a slight modification of the great EaselJS library with new features that I need for my projects:
+
+new features I added:
+
+
+- (StageGL): Rectangular scissor-based masks feature
+https://github.com/Nestorferrando/EaselJS/pull/4
+
+- (StageGL): Higher performance by reducing the data copied by bufferSubData
+https://github.com/Nestorferrando/EaselJS/pull/7
+
+- Possibility to load half size textures, you just need to activate "spritesheet.halfSize" variable to be properly rendered
+https://github.com/Nestorferrando/EaselJS/pull/8
+
+
+-Allowed to run on low-end android phones with only mediump precission
+https://github.com/Nestorferrando/EaselJS/pull/6
+
+
+Please, feel free to use/fork/request anything/wathever  :D
+
+
+
+===========================================
+
 # EaselJS
 
 EaselJS is a library for building high-performance interactive 2D content in HTML5. It provides a feature-rich display 
