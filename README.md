@@ -3,17 +3,17 @@ Hi! I'm Néstor and this is a slight modification of the great EaselJS library w
 new features I added:
 
 
-- (StageGL): Rectangular scissor-based masks feature
+## (StageGL): Rectangular scissor-based masks feature
 https://github.com/Nestorferrando/EaselJS/pull/4
 
-- (StageGL): Higher performance by reducing the data copied by bufferSubData
+## (StageGL): Higher performance by reducing the data copied by bufferSubData
 https://github.com/Nestorferrando/EaselJS/pull/7
 
-- Possibility to load half size textures, you just need to activate "spritesheet.halfSize" variable to be properly rendered
+## Possibility to load half size textures, you just need to activate "spritesheet.halfSize" variable to be properly rendered
 https://github.com/Nestorferrando/EaselJS/pull/8
 
 
--Allowed to run on low-end android phones with only mediump precission
+## Allowed to run on low-end android phones with only mediump precission
 https://github.com/Nestorferrando/EaselJS/pull/6
 
 
