@@ -676,7 +676,7 @@ this.createjs = this.createjs||{};
 	 * @default 10920
 	 * @readonly
 	 */
-	StageGL.DEFAULT_MAX_BATCH_SIZE = 8*1024;
+	StageGL.DEFAULT_MAX_BATCH_SIZE = 256;
 
 	/**
 	 * The default value for the minimum number of cards we want to process in a batch. Less
