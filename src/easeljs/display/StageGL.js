@@ -1758,7 +1758,7 @@ this.createjs = this.createjs||{};
 	 * @param  {Boolean} [isPOT=false] Marks whether the texture is "Power of Two", this may allow better quality AA.
 	 */
 	p.setTextureParams = function (gl, isPOT) {
-		if (isPOT && this._antialias) {
+		if (isPOT) {
 			//non POT linear works in some devices, but performance is NOT good, investigate
 			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
 			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
