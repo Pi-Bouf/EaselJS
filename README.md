@@ -17,7 +17,11 @@ https://github.com/Nestorferrando/EaselJS/pull/8
 https://github.com/Nestorferrando/EaselJS/pull/6
 
 
-Please, feel free to use/fork/request anything/wathever  :D
+## Allowed texture linear filtering with antialiasing off
+https://github.com/Nestorferrando/EaselJS/pull/9
+
+
+Please, feel free to use/fork/request anything/whathever  :D
 
 
 
