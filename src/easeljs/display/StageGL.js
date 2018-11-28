@@ -2647,8 +2647,15 @@ this.createjs = this.createjs||{};
 				var maskBounds = container.mask.getBounds();
 				var point1 = cMtx.transformPoint(maskBounds.x,maskBounds.y);
 				var point2 = cMtx.transformPoint(maskBounds.x+maskBounds.width,maskBounds.y+maskBounds.height);
-				var canvasHeight = this.canvas.height;
-				var rectangle = new createjs.Rectangle(point1.x,(canvasHeight-point1.y-(point2.y-point1.y)),(point2.x-point1.x),(point2.y-point1.y))
+				var width = point2.x-point1.x
+				var height = point2.y-point1.y
+				var x = point1.x
+				var y = this.canvas.height-point1.y-height
+				if ( x<0 ) {width += x;x = 0}
+				if (width<0) width = 0; 
+				if ( y<0 ) {height += y;y = 0;}
+				if (height<0) height = 0; 
+				var rectangle = new createjs.Rectangle(x,y,width,height)
 				this.batchReason = "applyMaskBefore";
 				this._renderBatch();
 				gl.enable(gl.SCISSOR_TEST);
