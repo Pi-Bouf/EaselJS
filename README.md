@@ -14,6 +14,7 @@ https://github.com/Nestorferrando/EaselJS/pull/8
 
 
 ## Allowed to run on low-end android phones with only mediump precission
+https://github.com/Nestorferrando/EaselJS/pull/6
 https://github.com/Nestorferrando/EaselJS/pull/11
 
 
