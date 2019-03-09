@@ -6,7 +6,8 @@ new features I added:
 ## (StageGL): Rectangular scissor-based masks feature
 https://github.com/Nestorferrando/EaselJS/pull/4
 
-## (StageGL): Higher performance by reducing the data copied by bufferSubData
+~~## (StageGL): Higher performance by reducing the data copied by bufferSubData~~
+(this is already implemented on latest official build)
 https://github.com/Nestorferrando/EaselJS/pull/7
 
 ## Possibility to load half size textures, you just need to activate "spritesheet.halfSize" variable to be properly rendered
