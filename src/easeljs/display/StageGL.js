@@ -458,6 +458,12 @@ this.createjs = this.createjs||{};
 		 * @private
 		 */
 		this._renderMode = "";
+		
+		/**
+		 *
+		 */
+		
+		this._renderModeLazy = "";
 
 		/**
 		 * Flag indicating that the content being batched in `appendToBatch` must be drawn now and not follow batch logic.
@@ -1316,6 +1322,7 @@ this.createjs = this.createjs||{};
 				this._createBuffers();
 				this._initMaterials();
 				this._updateRenderMode("source-over");
+				this._applyRenderMode();
 
 				this.updateViewport(this.canvas.width, this.canvas.height);
 				if (!this._directDraw) {
@@ -1403,6 +1410,7 @@ this.createjs = this.createjs||{};
 		}
 
 		this._updateRenderMode("source-over");
+		this._applyRenderMode();
 		this._drawContent(this, ignoreCache);
 
 		if (!this._directDraw) {
@@ -1468,6 +1476,7 @@ this.createjs = this.createjs||{};
 		container.transformMatrix = this._alignTargetToCache(target, manager);
 
 		this._updateRenderMode("source-over");
+		this._applyRenderMode();
 		this._drawContent(container, true);
 
 		// re-align buffers with fake filter passes to solve certain error cases
@@ -2452,13 +2461,23 @@ this.createjs = this.createjs||{};
 		);
 	};
 
+	
+	p._updateRenderMode = function (newMode) {
+		this._renderModeLazy = newMode;
+		}
+	
 	/**
 	 * Change the respective render settings and filters to the correct settings. Will build the shader on first use.
 	 * @method _updateRenderMode
 	 * @param {String} newMode Composite operation name
 	 * @protected
 	 */
-	p._updateRenderMode = function (newMode) {
+	p._applyRenderMode = function () {
+		
+		var newMode =  this._renderModeLazy
+		
+		if (this._renderMode === newMode) { return; }
+		
 		if ( newMode === null || newMode === undefined){ newMode = "source-over"; }
 
 		var blendSrc = StageGL.BLEND_SOURCES[newMode];
@@ -2466,8 +2485,6 @@ this.createjs = this.createjs||{};
 			if (this.vocalDebug){ console.log("Unknown compositeOperation ["+ newMode +"], reverting to default"); }
 			blendSrc = StageGL.BLEND_SOURCES[newMode = "source-over"];
 		}
-
-		if (this._renderMode === newMode) { return; }
 
 		var gl = this._webGLContext;
 		var shaderData = this._builtShaders[newMode];
@@ -2672,7 +2689,7 @@ this.createjs = this.createjs||{};
 				}
 		}
 
-		var previousRenderMode = this._renderMode;
+		var previousRenderMode = this._renderModeLazy;
 		if (container.compositeOperation) {
 			this._updateRenderMode(container.compositeOperation);
 		}
@@ -2723,10 +2740,12 @@ this.createjs = this.createjs||{};
 				continue;
 			}
 
-			var containerRenderMode = this._renderMode;
+			var containerRenderMode = this._renderModeLazy;
 			if (item.compositeOperation) {
 				this._updateRenderMode(item.compositeOperation);
 			}
+			
+			if (this._renderMode != this._renderModeLazy) this._applyRenderMode();
 
 			// check for overflowing batch, if yes then force a render
 			if (this._batchVertexCount + StageGL.INDICIES_PER_CARD > this._maxBatchVertexCount) {
@@ -2906,12 +2925,12 @@ this.createjs = this.createjs||{};
 				this._immediateBatchRender();
 			}
 
-			if (this._renderMode !== containerRenderMode) {
+			if (this._renderModeLazy !== containerRenderMode) {
 				this._updateRenderMode(containerRenderMode);
 			}
 		}
 
-		if (this._renderMode !== previousRenderMode) {
+		if (this._renderModeLazy !== previousRenderMode) {
 			this._updateRenderMode(previousRenderMode);
 		}
 		
