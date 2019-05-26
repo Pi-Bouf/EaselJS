@@ -3011,22 +3011,22 @@ this.createjs = this.createjs||{};
 		pc = config.position;
 		gl.bindBuffer(gl.ARRAY_BUFFER, pc.buffer);
 		gl.vertexAttribPointer(shaderProgram.positionAttribute, pc.size, pc.type, false, pc.stride, pc.offB);
-		gl.bufferSubData(gl.ARRAY_BUFFER, 0, pc.array);
+		gl.bufferSubData(gl.ARRAY_BUFFER, 0, pc.array.subarray(0,this._batchVertexCount*2));
 
 		pc = config.texture;
 		gl.bindBuffer(gl.ARRAY_BUFFER, pc.buffer);
 		gl.vertexAttribPointer(shaderProgram.textureIndexAttribute, pc.size, pc.type, false, pc.stride, pc.offB);
-		gl.bufferSubData(gl.ARRAY_BUFFER, 0, pc.array);
+		gl.bufferSubData(gl.ARRAY_BUFFER, 0, pc.array.subarray(0,this._batchVertexCount));
 
 		pc = config.uv;
 		gl.bindBuffer(gl.ARRAY_BUFFER, pc.buffer);
 		gl.vertexAttribPointer(shaderProgram.uvPositionAttribute, pc.size, pc.type, false, pc.stride, pc.offB);
-		gl.bufferSubData(gl.ARRAY_BUFFER, 0, pc.array);
+		gl.bufferSubData(gl.ARRAY_BUFFER, 0, pc.array.subarray(0,this._batchVertexCount*2));
 
 		pc = config.alpha;
 		gl.bindBuffer(gl.ARRAY_BUFFER, pc.buffer);
 		gl.vertexAttribPointer(shaderProgram.alphaAttribute, pc.size, pc.type, false, pc.stride, pc.offB);
-		gl.bufferSubData(gl.ARRAY_BUFFER, 0, pc.array);
+		gl.bufferSubData(gl.ARRAY_BUFFER, 0, pc.array.subarray(0,this._batchVertexCount));
 
 		gl.uniformMatrix4fv(shaderProgram.pMatrixUniform, gl.FALSE, this._projectionMatrix);
 
