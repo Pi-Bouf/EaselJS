@@ -14,6 +14,7 @@ https://github.com/Nestorferrando/EaselJS/pull/7
 
 ## Possibility to load smaller textures, you just need to set "spritesheet.downscale" value to the new texture image scale to be properly rendered
 https://github.com/Nestorferrando/EaselJS/pull/8
+
 https://github.com/Nestorferrando/EaselJS/pull/13
 
 
