@@ -315,9 +315,9 @@ this.createjs = this.createjs||{};
 		this._margin = 0;
 		
 		/**
-		 * spritesheet texture has been downsampled to half, thus, texture coordinates have to be adjusted on draw operations
+		 * spritesheet texture has been downscaled, thus, texture coordinates have to be adjusted on draw operations
 		 **/
-		this.halfSize = false;
+		this.downscale = 1;
 
 		// setup:
 		this._parseData(data);
