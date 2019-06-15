@@ -12,8 +12,9 @@ https://github.com/Nestorferrando/EaselJS/pull/4
 https://github.com/Nestorferrando/EaselJS/pull/7
 
 
-## Possibility to load half size textures, you just need to activate "spritesheet.halfSize" variable to be properly rendered
+## Possibility to load smaller textures, you just need to set "spritesheet.downscale" value to the new texture image scale to be properly rendered
 https://github.com/Nestorferrando/EaselJS/pull/8
+https://github.com/Nestorferrando/EaselJS/pull/13
 
 
 ## Allowed to run on low-end android phones with only mediump precission
