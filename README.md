@@ -8,7 +8,7 @@ https://github.com/Nestorferrando/EaselJS/pull/4
 
 
 ~~## (StageGL): Higher performance by reducing the data copied by bufferSubData~~
-(this got mplemented on official repo :D)
+(this performance problem got mostly solved on official repo)
 https://github.com/Nestorferrando/EaselJS/pull/7
 
 
