@@ -786,17 +786,6 @@ this.createjs = this.createjs||{};
 	p.updateContext = function(ctx) {
 		var o=this, mask=o.mask, mtx= o._props.matrix;
 		
-		if (mask && mask.graphics && !mask.graphics.isEmpty()) {
-			mask.getMatrix(mtx);
-			ctx.transform(mtx.a,  mtx.b, mtx.c, mtx.d, mtx.tx, mtx.ty);
-			
-			mask.graphics.drawAsPath(ctx);
-			ctx.clip();
-			
-			mtx.invert();
-			ctx.transform(mtx.a,  mtx.b, mtx.c, mtx.d, mtx.tx, mtx.ty);
-		}
-		
 		this.getMatrix(mtx);
 		var tx = mtx.tx, ty = mtx.ty;
 		if (DisplayObject._snapToPixelEnabled && o.snapToPixel) {
@@ -806,6 +795,12 @@ this.createjs = this.createjs||{};
 		ctx.transform(mtx.a,  mtx.b, mtx.c, mtx.d, tx, ty);
 		ctx.globalAlpha *= o.alpha;
 		if (o.compositeOperation) { ctx.globalCompositeOperation = o.compositeOperation; }
+		
+		if (mask && mask.graphics && !mask.graphics.isEmpty()) {		
+			mask.graphics.drawAsPath(ctx);
+			ctx.clip();
+		}
+		
 		if (o.shadow) { this._applyShadow(ctx, o.shadow); }
 	};
 
