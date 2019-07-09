@@ -6,6 +6,11 @@ new features I added:
 ## (StageGL): Rectangular scissor-based masks feature
 https://github.com/Nestorferrando/EaselJS/pull/4
 
+## (Canvas): Mask coordinates relative to the parent, instead of global
+
+Thus, mask's parent can be moved and the mask will still be valid
+https://github.com/Nestorferrando/EaselJS/pull/14
+
 
 ~~## (StageGL): Higher performance by reducing the data copied by bufferSubData~~
 (this performance problem got mostly solved on official repo)
