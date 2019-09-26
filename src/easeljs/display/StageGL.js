@@ -1773,14 +1773,10 @@ this.createjs = this.createjs||{};
 	 * @param  {Boolean} [isPOT=false] Marks whether the texture is "Power of Two", this may allow better quality AA.
 	 */
 	p.setTextureParams = function (gl, isPOT) {
-		if (isPOT) {
-			//non POT linear works in some devices, but performance is NOT good, investigate
-			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-		} else {
-			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
-			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
-		}
+
+		//non POT linear works in some devices, but performance is NOT good, investigate
+		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
 		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
 		gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
 	};
@@ -2334,8 +2330,8 @@ this.createjs = this.createjs||{};
 		texture.height = image.height;
 
 		if (this.vocalDebug) {
-			if (isNPOT && this._antialias) {
-				console.warn("NPOT(Non Power of Two) Texture with context.antialias true: "+ image.src);
+			if (isNPOT) {
+				console.warn("NPOT(Non Power of Two) Texture. Ensure correct performance : "+ image.src);
 			}
 			if (image.width > gl.MAX_TEXTURE_SIZE || image.height > gl.MAX_TEXTURE_SIZE){
 				console && console.error("Oversized Texture: "+ image.width+"x"+image.height +" vs "+ gl.MAX_TEXTURE_SIZE +"max");
